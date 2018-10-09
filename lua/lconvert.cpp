@@ -30,7 +30,7 @@ const stRegHelper key_words[] = {
 	{ T("重复"), T("repeat") },
 	{ T("直到"), T("until") },
 	{ T("跳出"), T("break") },
-	{ T("C循环"), T("for") },
+	{ T("对于"), T("for") },
 	{ NULL,NULL }
 };
 
