@@ -13,6 +13,7 @@ const stRegHelper key_words[] = {
 	{ T("结束"), T("end") },
 	{ T("否则"), T("else") },
 	{ T("否则如果"), T("elseif") },
+	{ T("又如"), T("elseif") },
 	{ T("循环"), T("while") },
 	{ T("局部变量"), T("local") },
 	{ T("返回"), T("return") },
@@ -28,7 +29,8 @@ const stRegHelper key_words[] = {
 	{ T("定义函数"), T("function") },
 	{ T("重复"), T("repeat") },
 	{ T("直到"), T("until") },
-	{ T("中断"), T("break") },
+	{ T("跳出"), T("break") },
+	{ T("C循环"), T("for") },
 	{ NULL,NULL }
 };
 

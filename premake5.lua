@@ -54,11 +54,11 @@ solution "LuaChinese"
 			flags { "Optimize", "ExtraWarnings"}				
 			
 			
-	project "test"
+	project "convert"
 		kind "ConsoleApp"
 		language "C++"
 		includedirs { "lua" }
-		files { "test.cpp" }
+		files { "convert.cpp" }
 		targetdir("build")
 		links { "lualib"}
 
