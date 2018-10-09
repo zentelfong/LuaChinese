@@ -146,7 +146,8 @@ const TCHAR *lclibScript = T("垃圾回收 = collectgarbage;" \
 	"转为字符串 = tostring;" \
 	"类型 = type;" \
 	"拆开 = unpack;" \
-	"保护调用 = xpcall;"
+	"保护调用 = xpcall;" \
+	"_全局 = _G;"
 );
 
 LUALIB_API void (luaC_openlib)(lua_State *L)
