@@ -95,7 +95,7 @@ LUALIB_API int luaC_loadfilex(lua_State *L, const char *filename,
 
 	if (needConvert)
 	{
-		//ĞèÒª×ª»»£¬Ö±½Ó¶ÁÈ¡È«²¿ÄÚÈİ¼ÓÔØ
+		//éœ€è¦è½¬æ¢ï¼Œç›´æ¥è¯»å–å…¨éƒ¨å†…å®¹åŠ è½½
 		std::string data;
 		for(int i=0;i<lf.n;++i)
 			data.push_back(lf.buff[i]);
@@ -215,35 +215,35 @@ int luaC_load(lua_State *L) {
 
 extern int TextStrToUtf8(char* buf, int buf_size, const wchar_t* in_text, const wchar_t* in_text_end);
 
-const TCHAR *lclibScript = T("À¬»ø»ØÊÕ = collectgarbage;" \
-	"¶ÏÑÔ = assert;" \
-	"Ö´ĞĞÎÄ¼ş = dofile;" \
-	"´íÎó = error;" \
-	"»ñÈ¡»·¾³ = getfenv;" \
-	"»ñÈ¡Ôª±í = getmetatable;" \
-	"Êı×éµü´ú = ipairs;" \
-	"µü´ú = pairs;" \
-	"¼ÓÔØ = load;" \
-	"¼ÓÔØÎÄ¼ş = loadfile;" \
-	"¼ÓÔØ×Ö·û´® = loadstring;" \
-	"Ä£¿é¶¨Òå = module;" \
-	"ÏÂÒ»¸ö = next;" \
-	"µ÷ÓÃ = pcall;" \
-	"´òÓ¡ = print;" \
-	"Ô­Ê¼ÏàµÈ = rawequal;" \
-	"Ô­Ê¼»ñÈ¡ = rawget;" \
-	"Ô­Ê¼ÉèÖÃ = rawset;" \
-	"°üº¬ = require;" \
-	"Ñ¡Ôñ = select;" \
-	"ÉèÖÃ»·¾³ = setfenv;" \
-	"ÉèÖÃÔª±í = setmetatable;" \
-	"×ªÎªÊı×Ö = tonumber;" \
-	"×ªÎª×Ö·û´® = tostring;" \
-	"ÀàĞÍ = type;" \
-	"²ğ¿ª = unpack;" \
-	"±£»¤µ÷ÓÃ = xpcall;" \
-	"_È«¾Ö = _G;" \
-	"_»·¾³ = _ENV;"
+const TCHAR *lclibScript = T("åƒåœ¾å›æ”¶ = collectgarbage;" \
+	"æ–­è¨€ = assert;" \
+	"æ‰§è¡Œæ–‡ä»¶ = dofile;" \
+	"é”™è¯¯ = error;" \
+	"è·å–ç¯å¢ƒ = getfenv;" \
+	"è·å–å…ƒè¡¨ = getmetatable;" \
+	"æ•°ç»„è¿­ä»£ = ipairs;" \
+	"è¿­ä»£ = pairs;" \
+	"åŠ è½½ = load;" \
+	"åŠ è½½æ–‡ä»¶ = loadfile;" \
+	"åŠ è½½å­—ç¬¦ä¸² = loadstring;" \
+	"æ¨¡å—å®šä¹‰ = module;" \
+	"ä¸‹ä¸€ä¸ª = next;" \
+	"è°ƒç”¨ = pcall;" \
+	"æ‰“å° = print;" \
+	"åŸå§‹ç›¸ç­‰ = rawequal;" \
+	"åŸå§‹è·å– = rawget;" \
+	"åŸå§‹è®¾ç½® = rawset;" \
+	"åŒ…å« = require;" \
+	"é€‰æ‹© = select;" \
+	"è®¾ç½®ç¯å¢ƒ = setfenv;" \
+	"è®¾ç½®å…ƒè¡¨ = setmetatable;" \
+	"è½¬ä¸ºæ•°å­— = tonumber;" \
+	"è½¬ä¸ºå­—ç¬¦ä¸² = tostring;" \
+	"ç±»å‹ = type;" \
+	"æ‹†å¼€ = unpack;" \
+	"ä¿æŠ¤è°ƒç”¨ = xpcall;" \
+	"_å…¨å±€ = _G;" \
+	"_ç¯å¢ƒ = _ENV;"
 );
 
 LUALIB_API void luaC_openlib(lua_State *L)

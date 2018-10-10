@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <string>
 #include <vector>
 #include <map>
@@ -12,7 +12,7 @@
 #endif
 
 
-//±êÊ¶·û×ª»»Æ÷
+//æ ‡è¯†ç¬¦è½¬æ¢å™¨
 class LConvert
 {
 public:
