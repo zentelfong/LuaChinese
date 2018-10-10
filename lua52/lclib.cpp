@@ -1,4 +1,4 @@
-#include "lclib.h"
+﻿#include "lclib.h"
 #include <stdio.h>
 #include <string.h>
 #include "lconvert.h"

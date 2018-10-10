@@ -1,4 +1,4 @@
-#include "lconvert.h"
+﻿#include "lconvert.h"
 
 
 struct stRegHelper {
