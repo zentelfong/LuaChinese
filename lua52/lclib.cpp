@@ -92,11 +92,12 @@ LUALIB_API int luaC_loadfilex(lua_State *L, const char *filename,
 	if (c != EOF)
 		lf.buff[lf.n++] = c;  /* 'c' is the first character of the stream */
 	
-
 	if (needConvert)
 	{
 		//需要转换，直接读取全部内容加载
 		std::string data;
+		for (int i = 0; i<lf.n; ++i)
+			data.push_back(lf.buff[i]);
 		while (!feof(lf.f))
 		{
 			size_t size = fread(lf.buff, 1, sizeof(lf.buff), lf.f);
@@ -134,7 +135,7 @@ LUALIB_API int luaC_loadbuffer(lua_State *L, const char *buff, size_t size, cons
 }
 
 
-LUALIB_API int (luaC_loadstring)(lua_State *L, const char *s)
+LUALIB_API int luaC_loadstring(lua_State *L, const char *s)
 {
 	std::string dataOut;
 	lc_convert.Convert(s, dataOut);
@@ -231,7 +232,7 @@ const TCHAR *lclibScript = T("垃圾回收 = collectgarbage;" \
 	"原始相等 = rawequal;" \
 	"原始获取 = rawget;" \
 	"原始设置 = rawset;" \
-	"包含文件 = require;" \
+	"包含 = require;" \
 	"选择 = select;" \
 	"设置环境 = setfenv;" \
 	"设置元表 = setmetatable;" \
@@ -240,10 +241,11 @@ const TCHAR *lclibScript = T("垃圾回收 = collectgarbage;" \
 	"类型 = type;" \
 	"拆开 = unpack;" \
 	"保护调用 = xpcall;" \
-	"_全局 = _G;"
+	"_全局 = _G;" \
+	"_环境 = _ENV;"
 );
 
-LUALIB_API void (luaC_openlib)(lua_State *L)
+LUALIB_API void luaC_openlib(lua_State *L)
 {
 #ifdef UNICODE
 	char buf[1024];
