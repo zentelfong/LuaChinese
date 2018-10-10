@@ -2,7 +2,6 @@
 #include <string>
 #include <vector>
 #include <map>
-#include "luaconf.h"
 
 #ifdef UNICODE
 #define T(x) L##x
