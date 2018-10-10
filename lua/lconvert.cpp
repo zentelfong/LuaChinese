@@ -26,11 +26,31 @@ const stRegHelper key_words[] = {
 	{ T("执行"), T("do") },
 	{ T("且"), T("and") },
 	{ T("或"), T("or") },
-	{ T("定义函数"), T("function") },
+	{ T("函数"), T("function") },
+	{ T("局部函数"), T("local function") },
 	{ T("重复"), T("repeat") },
 	{ T("直到"), T("until") },
 	{ T("跳出"), T("break") },
 	{ T("对于"), T("for") },
+	{ T("在"), T("in") },
+	{ T("__索引"),T("__index")},
+	{ T("__新索引"),T("__newindex") },
+	{ T("__加"),T("__add") },
+	{ T("__减"),T("__sub") },
+	{ T("__乘"),T("__mul") },
+	{ T("__除"),T("__div") },
+	{ T("__取余"),T("__mod") },
+	{ T("__指数"),T("__pow") },
+	{ T("__负数"),T("__unm") },
+	{ T("__连接"),T("__concat") },
+	{ T("__长度"),T("__len") },
+	{ T("__等于"),T("__eq") },
+	{ T("__小于"),T("__lt") },
+	{ T("__小于等于"),T("__le") },
+	{ T("__调用"),T("__call") },
+	{ T("__回收"),T("__gc") },
+	{ T("__模式"),T("__mode") },
+	{ T("__转字符串"),T("__tostring ") },
 	{ NULL,NULL }
 };
 
@@ -134,6 +154,9 @@ bool LConvert::Convert(const char* in, std::string& out)
 			case ')':
 			case ';':
 			case ',':
+			case '=':
+			case '{':
+			case '}':
 			{
 				if (!keyWord.empty())
 				{

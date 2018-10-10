@@ -117,6 +117,55 @@ LUALIB_API int (luaC_loadstring)(lua_State *L, const char *s)
 	return luaL_loadbuffer(L, dataOut.c_str(), dataOut.length(), s);
 }
 
+static const char *lcgeneric_reader(lua_State *L, void *ud, size_t *size) {
+	(void)ud;  /* to avoid warnings */
+	luaL_checkstack(L, 2, "too many nested functions");
+	lua_pushvalue(L, 1);  /* get function */
+	lua_call(L, 0, 1);  /* call it */
+	if (lua_isnil(L, -1)) {
+		*size = 0;
+		return NULL;
+	}
+	else if (lua_isstring(L, -1)) {
+		const char* str = lua_tostring(L, -1);
+		if (str)
+		{
+			//×ª»»½Å±¾
+			std::string dataOut;
+			lc_convert.Convert(str, dataOut);
+			lua_pop(L, 1);
+			lua_pushlstring(L, dataOut.c_str(), dataOut.length());
+		}
+		lua_replace(L, 3);  /* save string in a reserved stack slot */
+		return lua_tolstring(L, 3, size);
+	}
+	else luaL_error(L, "reader function must return a string");
+	return NULL;  /* to avoid warnings */
+}
+
+
+LUALIB_API int luaC_load(lua_State *L) {
+	int status;
+	const char *cname = luaL_optstring(L, 2, "=(load)");
+	luaL_checktype(L, 1, LUA_TFUNCTION);
+	lua_settop(L, 3);  /* function, eventual name, plus one reserved slot */
+	status = lua_load(L, lcgeneric_reader, NULL, cname);
+
+	if (status == 0)  /* OK? */
+		return 1;
+	else {
+		lua_pushnil(L);
+		lua_insert(L, -2);  /* put before error message */
+		return 2;  /* return nil plus error message */
+	}
+}
+
+
+
+
+
+
+
 
 extern int TextStrToUtf8(char* buf, int buf_size, const wchar_t* in_text, const wchar_t* in_text_end);
 

@@ -18,7 +18,7 @@
 
 #include "lauxlib.h"
 #include "lualib.h"
-
+#include "lclib.h"
 
 
 
@@ -278,13 +278,13 @@ static int luaB_loadstring (lua_State *L) {
   size_t l;
   const char *s = luaL_checklstring(L, 1, &l);
   const char *chunkname = luaL_optstring(L, 2, s);
-  return load_aux(L, luaL_loadbuffer(L, s, l, chunkname));
+  return load_aux(L, luaC_loadbuffer(L, s, l, chunkname));
 }
 
 
 static int luaB_loadfile (lua_State *L) {
   const char *fname = luaL_optstring(L, 1, NULL);
-  return load_aux(L, luaL_loadfile(L, fname));
+  return load_aux(L, luaC_loadfile(L, fname));
 }
 
 
@@ -325,7 +325,7 @@ static int luaB_load (lua_State *L) {
 static int luaB_dofile (lua_State *L) {
   const char *fname = luaL_optstring(L, 1, NULL);
   int n = lua_gettop(L);
-  if (luaL_loadfile(L, fname) != 0) lua_error(L);
+  if (luaC_loadfile(L, fname) != 0) lua_error(L);
   lua_call(L, 0, LUA_MULTRET);
   return lua_gettop(L) - n;
 }
@@ -453,7 +453,7 @@ static const luaL_Reg base_funcs[] = {
   {"getfenv", luaB_getfenv},
   {"getmetatable", luaB_getmetatable},
   {"loadfile", luaB_loadfile},
-  {"load", luaB_load},
+  {"load", luaC_load},
   {"loadstring", luaB_loadstring},
   {"next", luaB_next},
   {"pcall", luaB_pcall},

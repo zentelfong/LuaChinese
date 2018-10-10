@@ -20,7 +20,7 @@
 
 #include "lauxlib.h"
 #include "lualib.h"
-
+#include "lclib.h"
 
 /* prefix for open functions in C libraries */
 #define LUA_POF		"luaopen_"
@@ -382,7 +382,7 @@ static int loader_Lua (lua_State *L) {
   const char *name = luaL_checkstring(L, 1);
   filename = findfile(L, name, "path");
   if (filename == NULL) return 1;  /* library not found in this path */
-  if (luaL_loadfile(L, filename) != 0)
+  if (luaC_loadfile(L, filename) != 0)
     loaderror(L, filename);
   return 1;  /* library loaded successfully */
 }
